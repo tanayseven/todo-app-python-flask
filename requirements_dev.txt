@@ -1,0 +1,6 @@
+-r requirements.txt
+pytest==3.2.3
+selenium==3.6.0
+behave==1.2.5
+Flask-Script==2.0.6
+flask-webtest==0.0.9
