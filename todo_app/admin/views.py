@@ -15,10 +15,8 @@ class LoginView(BaseView):
             if user:
                 token = signer.sign(bytes(user.id))
                 return render_template('admin_home.html', token=token)
-            else:
-                return render_template('login.html', message='Invalid Credentials')
-        else:
-            return redirect('/admin/')
+            return render_template('login.html', message='Invalid Credentials')
+        return redirect('/admin/')
 
     @expose('register/', methods=('GET', 'POST',))
     def register(self):
@@ -27,8 +25,7 @@ class LoginView(BaseView):
                                     password=request.form.get('registerPassword'),
                                     email=request.form.get('registerEmail'))
             return render_template('login.html', message='Successfully created account')
-        else:
-            return render_template('register.html')
+        return render_template('register.html')
 
 
 def register_admin(app):

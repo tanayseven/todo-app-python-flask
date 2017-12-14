@@ -10,7 +10,8 @@ from todo_app.config import load_config, SECRET_KEY
 
 app = Flask(__name__, template_folder='templates/', static_url_path='')
 
-load_config(app, os.environ['TODO_APP'])
+env = os.environ.get('TODO_APP') or 'test'
+load_config(app, env)
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 signer = Signer(SECRET_KEY)

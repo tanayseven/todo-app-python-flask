@@ -9,7 +9,8 @@ from todo_app.extensions import app
 register_admin(app)
 manager = Manager(app)
 
-print("*** CURRENT ENVIRONMENT: " + os.environ['TODO_APP'] + " ***")
+env = os.environ.get('TODO_APP') or 'test'
+print("*** CURRENT ENVIRONMENT: " + env + " ***")
 
 
 @app.route('/something')
