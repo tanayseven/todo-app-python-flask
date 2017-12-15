@@ -1,6 +1,7 @@
 import pytest
-from webtest.app import TestApp as AppClient
+from flask_webtest import TestApp as ApiTestApp
 
+from todo_app.register import register_all_routes
 from todo_app.extensions import db, app
 
 
@@ -12,6 +13,10 @@ class DatabaseFixtures:
 
 
 class ApiFixtures:
+    @pytest.fixture(autouse=True)
+    def setup(self):
+        register_all_routes()
+
     @pytest.fixture
     def testapp(self):
-        return AppClient(app)
+        return ApiTestApp(app)

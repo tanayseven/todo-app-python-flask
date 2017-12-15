@@ -3,10 +3,9 @@ from flask import Blueprint, request, jsonify
 from todo_app.user.repos import ListUserRepo
 from todo_app.extensions import app
 
-user_endpoints = Blueprint('user', __name__, url_prefix='/user')
+blueprint = Blueprint('user', __name__)
 
-
-@user_endpoints.route('/register/', methods=('POST',))
+@blueprint.route('/register', methods=('POST',))
 def register_user():
     try:
         ListUserRepo.add_new_user(
@@ -21,14 +20,11 @@ def register_user():
         return jsonify({'message': 'User already exists'}), 400
 
 
-@user_endpoints.route('/login', methods=('POST',))
+@blueprint.route('/login', methods=('POST',))
 def login_user():
     pass
 
 
-@user_endpoints.route('/all', methods=('GET',))
+@blueprint.route('/all', methods=('GET',))
 def all_todo_lists():
     return jsonify(dict(todo_lists=[]))
-
-
-app.register_blueprint(user_endpoints)

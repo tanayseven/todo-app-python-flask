@@ -11,3 +11,7 @@ class TestNewUserCreation(DatabaseFixtures, ApiFixtures):
             "last_name": "PrabhuDesai"
         })
         assert res.status_code == 200
+
+    def test_all_api_should_return_list_of_all_users(self, testapp):
+        res = testapp.get('/user/all')
+        assert res.status_code == 200
