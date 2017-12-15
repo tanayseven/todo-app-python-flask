@@ -1,36 +1,19 @@
+# -*- coding: utf-8 -*-
 import os
 
-from flask_migrate import MigrateCommand
-from flask_script import Manager
+from manager import Manager
 
-from todo_app.admin.views import register_admin
-from todo_app.extensions import app
-from todo_app.register import register_all_routes
-
-register_admin(app)
-manager = Manager(app)
-
-env = os.environ.get('TODO_APP') or 'test'
-print("*** CURRENT ENVIRONMENT: " + env + " ***")
-
-
-@app.route('/something')
-def something():
-    return "Something is working"
+manager = Manager()
 
 
 @manager.command
-def serve(host='0.0.0.0', port=5000, debug=False):
-    register_all_routes()
-    app.run(host, port, debug=debug)
+def echo(text=''):
+    print(text)
 
 
 @manager.command
-def test():
-    pass
-
-
-manager.add_command('db', MigrateCommand)
-
-if __name__ == '__main__':
-    manager.run()
+def serve():
+    os.system(
+        'export FLASK_APP=application.py;'
+        'python -m flask run'
+    )
