@@ -7,8 +7,10 @@ manager = Manager()
 
 
 @manager.command
-def echo(text=''):
-    print(text)
+def test():
+    os.system(
+        'pytest'
+    )
 
 
 @manager.command
