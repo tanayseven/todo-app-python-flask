@@ -7,9 +7,9 @@ manager = Manager()
 
 
 @manager.command
-def test():
+def test(filter='', capture=False):
     os.system(
-        'pytest'
+        'pytest -k ' + filter + (' -s' if capture else '')
     )
 
 
