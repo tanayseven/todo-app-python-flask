@@ -1,0 +1,16 @@
+{
+  "name": "todo_app_ui",
+  "version": "0.0.1",
+  "description": "React based UI for TODO app and the admin dashboard",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "keywords": [
+    "ui",
+    "todo",
+    "app"
+  ],
+  "author": "Tanay PrabhuDesai",
+  "license": "MIT"
+}

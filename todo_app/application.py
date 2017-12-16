@@ -16,4 +16,4 @@ class User(db.Model):
         return '<User %r>' % self.username
 
 
-app.run('0.0.0.0', '5000')
+app.run('0.0.0.0', 5000)

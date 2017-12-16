@@ -14,6 +14,6 @@ def echo(text=''):
 @manager.command
 def serve():
     os.system(
-        'export FLASK_APP=application.py;'
+        'export FLASK_APP=todo_app.application;'
         'python -m flask run'
     )
